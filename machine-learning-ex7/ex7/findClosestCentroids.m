@@ -10,7 +10,7 @@ K = size(centroids, 1);
 
 % You need to return the following variables correctly.
 idx = zeros(size(X,1), 1);
-
+ct_distant = zeros(K, 1);
 % ====================== YOUR CODE HERE ======================
 % Instructions: Go over every example, find its closest centroid, and store
 %               the index inside idx at the appropriate location.
@@ -21,11 +21,12 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
-
+for i=1:size(X, 1)
+  for j=1:K
+     ct_distant(j) = (X(i,:) - centroids(j, :)) * (X(i,:) - centroids(j, :))';
+  end
+  [mValue idx(i)] = min(ct_distant);
+end
 
 % =============================================================
 
